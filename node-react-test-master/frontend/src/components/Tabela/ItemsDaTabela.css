@@ -1,0 +1,17 @@
+
+td{
+  border: 1px solid black;
+  width: 10%;
+  height: 5%;
+  padding: 10px;
+}
+
+.acao-remover{
+  color: red;
+  cursor:pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.acao-remover:hover{
+  color: Brown;
+}
