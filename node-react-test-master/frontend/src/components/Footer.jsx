@@ -1,17 +1,31 @@
 import React, { useState } from 'react'
 import '../components/Footer.css'
+import {api} from '../lib/api'
 
-export default function Footer() {
+export default function Footer({getList}) {
   const [nome, setNome] = useState('')
   const [quantidade, setQuantidade] = useState('')
   
-  function handleSubmitFeedback(event) {
+  async function handleSubmitFeedback(event) {
     event.preventDefault()
 
     console.log({
       nome,
       quantidade
     })
+
+    try{
+      const response = await api.post('/itens',{
+        nome,
+        quantidade
+      })
+
+      console.log(response.data)
+      getList()
+    }catch(e){
+      console.log(e)
+      return
+    }
 
   }
   return (

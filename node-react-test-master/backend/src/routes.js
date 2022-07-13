@@ -38,3 +38,25 @@ routes.delete('/itens', (req, res) => {
     return res.status(500).send()
   }
 })
+
+routes.post('/itens', (req, res) => {
+  const { nome, quantidade } = req.body
+
+  console.log({
+    nome,
+    quantidade
+  })
+
+  try {
+    const item = {
+      id: lista.itens.length + 1,
+      nome,
+      quantidade
+    }
+    lista.itens.push(item)
+    return res.status(200).json(item)
+  } catch (e) {
+    console.log(e)
+    return res.status(500).send()
+  }
+})
